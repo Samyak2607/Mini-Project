@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container">
+    <span>Your date of birth:  </span><br>
+    <input type="number" id="birth-day" min="1" max="31" placeholder="Day">
+    <select id="birth-month">
+      <option value="1">01 Jan</option>
+      <option value="2">02 Feb</option>
+      <option value="3">03 Mar</option>
+      <option value="4">04 Apr</option>
+      <option value="5">05 May</option>
+      <option value="6">06 Jun</option>
+      <option value="7">07 Jul</option>
+      <option value="8">08 Aug</option>
+      <option value="9">09 Sep</option>
+      <option value="10">10 Oct</option>
+      <option value="11">11 Nov</option>
+      <option value="12">12 Dec</option>
+    </select>
+    <input type="number" id="birth-year" placeholder="Year">
+    <br>
+    <br>
+    <span>Date to be calculated:  </span><br>
+    <input type="number" id="current-day" min="1" max="31" placeholder="Day">
+    <select id="current-month">
+      <option value="1">01 Jan</option>
+      <option value="2">02 Feb</option>
+      <option value="3">03 Mar</option>
+      <option value="4">04 Apr</option>
+      <option value="5">05 May</option>
+      <option value="6">06 Jun</option>
+      <option value="7" selected>07 Jul</option>
+      <option value="8">08 Aug</option>
+      <option value="9">09 Sep</option>
+      <option value="10">10 Oct</option>
+      <option value="11">11 Nov</option>
+      <option value="12">12 Dec</option>
+    </select>
+    <input type="number" id="current-year" placeholder="Year" value="2019">
+    <br>
+    <br>
+    <!--Made by Noor-->
+    <button id="butt" onclick="calculate()">Calculate <i class="fas fa-caret-right"></i></button>
+    <hr>
+    <p id="result"></p>
+    <p id="error"></p>
+    </hr>
+  </div>
+
+  <script type="text/javascript">
+    function calculate(){
+      var bDay, bMonth, bYear, cDay, cMonth, cYear, day, month, year, Months, Days, Hours, Minutes, Seconds, a, b, c, x, y, z;
+        bday=Number(document.getElementById('birth-day').value);
+        bmonth=Number(document.getElementById('birth-month').value);
+        byear=Number(document.getElementById('birth-year').value);
+        cday = Number(document.getElementById('current-day').value);
+        cmonth = Number(document.getElementById('current-month').value);
+        cyear = Number(document.getElementById('current-year').value);
+        if(cmonth<bmonth){
+          cmonth+=12;
+          cyear-=1;
+          
+        }
+        month=cmonth-bmonth;
+        if(cday<bday){
+          cday+=31;
+          month-=1;
+          
+        }
+        day=cday-bday;
+        if(cyear<byear){
+          
+          document.getElementById("error").innerHTML = "Something gone worng!";
+          year = 0
+          month = 0;
+          day = 0;
+        }
+        else{
+          year=cyear-byear;
+        }
+        Months=year*12+month;
+        Days=Months*30+day;
+        Hours=Days*24;
+        Minutes=Hours*60;
+        Seconds = Minutes*60;
+        document.getElementById('result').innerHTML="<br>You are "+year+" years "+month+" Months "+day+" Days Old<br>"+Months+" Months Old<br>"+Days+" Days Old<br>"+Hours+" Hours Old<br>"+Minutes+" Minutes Old<br>"+Seconds+" Seconds Old<br>";
+    }
+  </script>
+</body>
+</html>
